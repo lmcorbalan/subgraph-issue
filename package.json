@@ -1,0 +1,36 @@
+{
+  "name": "subgraph-issue",
+  "version": "1.0.0",
+  "description": "Reproducing a weird issue in a subgraph",
+  "main": "index.js",
+  "author": "lmcorbalan",
+  "license": "MIT",
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.22.0-alpha.2",
+    "@graphprotocol/graph-ts": "^0.22.0-alpha.2",
+    "@types/fs-extra": "^9.0.12",
+    "@typescript-eslint/eslint-plugin": "^4.30.0",
+    "@typescript-eslint/parser": "^4.30.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "fs-extra": "^10.0.0",
+    "husky": "4.3.8",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2"
+  },
+  "scripts": {
+    "clean": "rimraf ./generated",
+    "codegen": "graph codegen",
+    "codegen:js": "graph codegen subgraphJS.js",
+    "build": "graph build",
+    "build:js": "graph build subgraphJS.js",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ lmcorbalan/tg-issue --access-token",
+    "deploy:js": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ lmcorbalan/tg-issue subgraphJS.js --access-token"
+  }
+}

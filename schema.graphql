@@ -1,0 +1,44 @@
+type Account @entity {
+  # Address
+  id: ID!
+
+  assets: [Asset!]! @derivedFrom(field: "owner")
+}
+
+type Collection @entity {
+  # Smart Contract address
+  id: ID!
+
+  name: String!
+
+  symbol: String!
+
+  assets: [Asset!]! @derivedFrom(field: "collection")
+
+  baseURI: String
+
+  # from config
+  imageURI: String
+
+  # from config
+  description: String
+
+  # from config
+  externalLink: String
+}
+
+# This entity assumes that ERC1155 are non-fungible types
+type Asset @entity {
+  # Smart contract address + token id from event
+  id: ID!
+
+  collection: Collection!
+
+  owner: Account
+
+  tokenURI: String
+
+  imageURI: String
+
+  burned: Boolean!
+}
